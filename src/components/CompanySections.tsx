@@ -16,7 +16,7 @@ export function CompanySections() {
         </div>
         <div className="mx-auto mt-14 max-w-[1440px] overflow-hidden border border-white/10 bg-[#161B26]">
           <div className="grid min-h-[270px] md:grid-cols-2">
-            <div className="relative min-h-[240px] overflow-hidden bg-[#080B11]"><img src="/logo/logo.png" alt="Caminhão Volkswagen azul em frente a um edifício corporativo" className="absolute inset-0 h-full w-full object-cover object-[35%_center] opacity-90" /><div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#161B26]/75" /></div>
+            <div className="relative min-h-[240px] overflow-hidden bg-[#080B11]"><img src="/images/truck-sunset-side.jpg" alt="Caminhão branco da Luciano Locações na estrada ao pôr do sol" className="absolute inset-0 h-full w-full object-cover object-[35%_center] opacity-90" /><div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#161B26]/75" /></div>
             <div className="flex flex-col justify-center p-7 sm:p-10"><span className="text-[10px] font-bold tracking-[0.2em] text-[#FCFC04]">VOLKSWAGEN 6.170</span><h3 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">Pronto para a sua próxima operação.</h3><p className="mt-4 max-w-md text-sm leading-6 text-slate-400">Frota nova, locação por contrato e uma equipe comprometida com a continuidade do seu negócio.</p><a href="#contrato" className="mt-7 inline-flex w-fit items-center gap-2 border border-white/15 px-4 py-3 text-xs font-bold text-white transition hover:border-[#FCFC04] hover:text-[#FCFC04]">Solicitar condições <ArrowUpRight size={14} /></a></div>
           </div>
         </div>

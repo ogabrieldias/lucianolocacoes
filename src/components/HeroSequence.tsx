@@ -9,15 +9,15 @@ const TOTAL_FRAMES = 200;
 const FRAME_PREFIX = "frame-";
 const FRAME_EXTENSION = ".jpg";
 const FRAME_DIGITS = 4;
+const FRAME_DIRECTORY = "/frames-jpg/";
 
 function getFramePath(index: number) {
-  return `/frames-jpg/${FRAME_PREFIX}${String(index + 1).padStart(FRAME_DIGITS, "0")}${FRAME_EXTENSION}`;
+  return `${FRAME_DIRECTORY}${FRAME_PREFIX}${String(index + 1).padStart(FRAME_DIGITS, "0")}${FRAME_EXTENSION}`;
 }
 
 export function HeroSequence() {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
   const [progress, setProgress] = useState(0);
   const [sequenceReady, setSequenceReady] = useState(false);
 
@@ -31,78 +31,120 @@ export function HeroSequence() {
     let disposed = false;
     const frames: HTMLImageElement[] = new Array(TOTAL_FRAMES);
     const fallback = new Image();
-    fallback.src = "/logo/logo.png";
-    imageRef.current = fallback;
+    let activeImage: HTMLImageElement | null = fallback;
+    fallback.src = "/images/truck-sunset-front.jpg";
+    fallback.onload = () => draw(fallback);
 
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.floor(window.innerWidth * dpr);
-      canvas.height = Math.floor(window.innerHeight * dpr);
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      draw(imageRef.current);
-    };
-
-    function draw(image: HTMLImageElement | null) {
+    let pixelRatio = 1;
+    const draw = (image: HTMLImageElement | null) => {
       if (!image?.complete || !image.naturalWidth) return;
       const width = window.innerWidth;
       const height = window.innerHeight;
       const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
       const drawWidth = image.naturalWidth * scale;
       const drawHeight = image.naturalHeight * scale;
-      context!.clearRect(0, 0, width, height);
-      context!.drawImage(image, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
-    }
+      context.clearRect(0, 0, width, height);
+      context.drawImage(image, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+    };
 
-    fallback.onload = () => draw(fallback);
+    const resize = () => {
+      pixelRatio = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(window.innerWidth * pixelRatio);
+      canvas.height = Math.floor(window.innerHeight * pixelRatio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      draw(activeImage);
+    };
+
     resize();
     window.addEventListener("resize", resize);
 
-    let loaded = 0;
-    let successful = 0;
-    const batchSize = 20;
+    let loadedFrames = 0;
+    let successfulFrames = 0;
+    let loadingStopped = false;
+    let batchTimer: number | undefined;
+
     const loadBatch = (start: number) => {
+      if (disposed || loadingStopped || start >= TOTAL_FRAMES) {
+        if (!disposed && successfulFrames > 1) setSequenceReady(true);
+        return;
+      }
+
+      const batchSize = 20;
       const end = Math.min(start + batchSize, TOTAL_FRAMES);
+      let settledInBatch = 0;
+      const settleFrame = () => {
+        settledInBatch += 1;
+        if (settledInBatch === end - start && !disposed) {
+          loadedFrames = end;
+          setProgress(Math.round((loadedFrames / TOTAL_FRAMES) * 100));
+          if (successfulFrames > 1) setSequenceReady(true);
+          batchTimer = window.setTimeout(() => loadBatch(end), 80);
+        }
+      };
+
       for (let index = start; index < end; index += 1) {
         const frame = new Image();
         frames[index] = frame;
         frame.onload = () => {
-          successful += 1;
-          loaded += 1;
-          if (!disposed) {
-            setProgress(Math.round((loaded / TOTAL_FRAMES) * 100));
-            if (index === 0) {
-              imageRef.current = frame;
-              draw(frame);
-            }
+          successfulFrames += 1;
+          if (index === 0) {
+            activeImage = frame;
+            draw(frame);
           }
+          settleFrame();
         };
         frame.onerror = () => {
-          loaded += 1;
-          if (!disposed) setProgress(Math.round((loaded / TOTAL_FRAMES) * 100));
+          if (index === 0) loadingStopped = true;
+          settleFrame();
         };
         frame.src = getFramePath(index);
       }
-      if (end < TOTAL_FRAMES) window.setTimeout(() => loadBatch(end), 120);
-      else window.setTimeout(() => { if (!disposed) setSequenceReady(successful > 1); }, 250);
     };
-    loadBatch(0);
 
-    let currentFrame = { value: 0 };
+    const firstFrame = new Image();
+    frames[0] = firstFrame;
+    firstFrame.onload = () => {
+      successfulFrames = 1;
+      activeImage = firstFrame;
+      draw(firstFrame);
+      loadBatch(1);
+    };
+    firstFrame.onerror = () => {
+      loadingStopped = true;
+      if (!disposed) {
+        setProgress(0);
+        setSequenceReady(false);
+      }
+    };
+    firstFrame.src = getFramePath(0);
+
+    const targetFrame = { value: 0 };
+    let currentFrame = 0;
     const renderFrame = () => {
-      const frame = frames[Math.round(currentFrame.value)];
+      currentFrame += (targetFrame.value - currentFrame) * 0.12;
+      if (Math.abs(targetFrame.value - currentFrame) < 0.01) currentFrame = targetFrame.value;
+      const frame = frames[Math.round(currentFrame)];
       if (frame?.complete && frame.naturalWidth) {
-        imageRef.current = frame;
+        activeImage = frame;
         draw(frame);
       }
     };
+    gsap.ticker.add(renderFrame);
 
     const animation = gsap.context(() => {
       const timeline = gsap.timeline({
-        scrollTrigger: { trigger: section, start: "top top", end: "+=3500", scrub: 1.2, pin: true, invalidateOnRefresh: true },
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "+=3500",
+          scrub: 1.5,
+          pin: true,
+          invalidateOnRefresh: true,
+        },
       });
-      timeline.to(currentFrame, { value: TOTAL_FRAMES - 1, ease: "none", onUpdate: renderFrame }, 0);
+      timeline.to(targetFrame, { value: TOTAL_FRAMES - 1, ease: "none" }, 0);
       timeline.to(".hero-copy", { autoAlpha: 0, y: -24, ease: "power1.out", duration: 0.2 }, 0);
       timeline.fromTo(".tech-card", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, stagger: 0.12, duration: 0.12, ease: "power2.out" }, 0.25);
       timeline.to(".tech-card", { autoAlpha: 0, y: -12, stagger: 0.08, duration: 0.1 }, 0.82);
@@ -110,14 +152,16 @@ export function HeroSequence() {
 
     return () => {
       disposed = true;
+      if (batchTimer) window.clearTimeout(batchTimer);
       window.removeEventListener("resize", resize);
+      gsap.ticker.remove(renderFrame);
       animation.revert();
     };
   }, []);
 
   return (
     <section id="inicio" ref={sectionRef} className="relative h-screen min-h-[680px] overflow-hidden bg-[#10131A]">
-      <canvas ref={canvasRef} aria-label="Caminhão de locação diante de edifício corporativo" className="absolute inset-0 h-full w-full" />
+      <canvas ref={canvasRef} aria-label="Caminhão branco da Luciano Locações em uma rodovia ao pôr do sol" className="absolute inset-0 h-full w-full" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#10131A]/90 via-[#10131A]/45 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10131A]/65 via-transparent to-[#10131A]/35" />
 
