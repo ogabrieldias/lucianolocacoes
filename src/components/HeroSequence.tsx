@@ -177,7 +177,7 @@ export function HeroSequence() {
             Locação por contrato de caminhões Volkswagen 6.170 novos, prontos para elevar a eficiência da sua operação.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#contrato" className="inline-flex min-h-12 items-center justify-center gap-3 bg-[#FCFC04] px-5 text-xs font-extrabold text-[#10131A] transition hover:bg-white sm:px-6">
+            <a href="#contato" className="inline-flex min-h-12 items-center justify-center gap-3 bg-[#FCFC04] px-5 text-xs font-extrabold text-[#10131A] transition hover:bg-white sm:px-6">
               Solicitar Proposta de Contrato <ArrowRight size={15} />
             </a>
             <a href="#frota" className="inline-flex min-h-12 items-center justify-center gap-3 border border-[#0048D6] bg-[#10131A]/40 px-5 text-xs font-bold text-white backdrop-blur-sm transition hover:bg-[#0048D6] sm:px-6">

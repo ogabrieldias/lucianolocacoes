@@ -7,7 +7,7 @@ const links = [
   { label: "Frota", href: "#frota" },
   { label: "Diferenciais", href: "#diferenciais" },
   { label: "Atendimento Nacional", href: "#nacional" },
-  { label: "Solicitar Contrato", href: "#contrato" },
+  { label: "Solicitar Contrato", href: "#contato" },
 ];
 
 export function Navbar() {
@@ -36,7 +36,7 @@ export function Navbar() {
           <a href="https://wa.me/5524988148421" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[11px] font-medium text-slate-300 transition-colors hover:text-white">
             <Phone size={13} className="text-[#FCFC04]" /> (24) 98814-8421
           </a>
-          <a href="#contrato" className="inline-flex h-10 items-center gap-2 rounded-sm bg-[#FCFC04] px-4 text-[11px] font-extrabold text-[#10131A] transition-colors hover:bg-white">
+          <a href="#contato" className="inline-flex h-10 items-center gap-2 rounded-sm bg-[#FCFC04] px-4 text-[11px] font-extrabold text-[#10131A] transition-colors hover:bg-white">
             Solicitar Proposta <ArrowUpRight size={14} />
           </a>
         </div>
