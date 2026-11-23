@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root { color-scheme: dark; background: #10131A; font-family: Arial, Helvetica, sans-serif; }
+* { box-sizing: border-box; }
+html.lenis, html.lenis body { height: auto; }
+html.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+body { margin: 0; background: #10131A; color: #fff; }
+::selection { color: #10131A; background: #FCFC04; }
+.eyebrow { color: #FCFC04; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+.section-title { max-width: 760px; font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.02; letter-spacing: -.05em; color: white; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
