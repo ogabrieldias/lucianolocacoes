@@ -29,36 +29,32 @@ const values = [
 
 export function CorporateValueSection() {
   return (
-    <section id="diferenciais" aria-labelledby="corporate-value-title" className="border-t border-white/10 bg-[#0B0F17] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16 lg:pb-16">
+    <section id="diferenciais" aria-labelledby="corporate-value-title" className="border-t border-white/10 bg-[#10131A] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+        <div className="flex flex-col justify-between lg:min-h-[540px]">
           <div>
             <p className="eyebrow">02 / PARCERIA CORPORATIVA</p>
-            <h2 id="corporate-value-title" className="section-title mt-5 max-w-3xl">Compromisso com a <span className="text-[#FCFC04]">continuidade da sua operação</span></h2>
+            <h2 id="corporate-value-title" className="section-title mt-6 max-w-xl leading-[0.95]">Seriedade para manter <span className="text-[#FCFC04]">sua operação em movimento.</span></h2>
+            <p className="mt-7 max-w-md text-base leading-7 text-slate-300">Parceria direta e transparente para indústrias e empresas de construção. Locação por contrato, sem motorista, com atendimento nacional a partir de Três Rios - RJ.</p>
           </div>
-          <div className="max-w-xl lg:justify-self-end">
-            <p className="text-sm leading-7 text-slate-300">A Luciano Locações é parceira de indústrias e empresas de construção que exigem seriedade e uma relação transparente. Sediada em Três Rios (RJ), conta com estrutura logística para atender projetos e contratos em todo o território nacional.</p>
-            <div className="mt-6 flex items-center gap-3 border-l-2 border-[#0048D6] pl-4">
-              <span className="h-2 w-2 shrink-0 bg-[#FCFC04]" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">Seriedade no compromisso. Parceria em cada etapa.</p>
-            </div>
+          <div className="mt-10 flex max-w-sm items-center gap-4 border-l-2 border-[#0048D6] py-2 pl-5 lg:mt-0">
+            <span className="size-2 shrink-0 bg-[#FCFC04]" />
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">Compromisso claro. Relação de longo prazo.</p>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <ol className="border-t border-white/15">
           {values.map(({ icon: Icon, number, title, description }) => (
-            <article key={title} className="group flex min-h-[260px] flex-col border border-white/10 bg-[#161B26] p-6 transition-colors duration-300 hover:border-[#0048D6]/70 sm:p-7">
-              <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center border border-[#0048D6]/35 bg-[#0048D6]/10 text-[#FCFC04] transition-colors group-hover:bg-[#0048D6]/20">
-                  <Icon size={21} strokeWidth={1.8} aria-hidden="true" />
-                </span>
-                <span className="font-mono text-[10px] tracking-widest text-slate-600">{number}</span>
+            <li key={title} className="group grid grid-cols-[2.75rem_1fr_auto] items-start gap-4 border-b border-white/15 py-5 sm:gap-6 sm:py-6">
+              <span className="border-l-2 border-[#0048D6] pl-3 font-mono text-xs tracking-widest text-[#FCFC04]">{number}</span>
+              <div>
+                <h3 className="text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#FCFC04] sm:text-xl">{title}</h3>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">{description}</p>
               </div>
-              <h3 className="mt-8 max-w-[15rem] text-lg font-bold leading-snug text-white">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">{description}</p>
-            </article>
+              <Icon size={18} strokeWidth={1.7} className="mt-1 text-[#0048D6]" aria-hidden="true" />
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
-import { ArrowDownRight, ArrowUpRight, Clock3, MapPin, MessageCircle } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Clock3, Mail, MapPin, MessageCircle } from "lucide-react";
 
 const phoneNumber = "5524988148421";
-const inputClassName = "mt-2 min-h-12 w-full border border-white/10 bg-[#10131A] px-4 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-[#0048D6] focus:ring-2 focus:ring-[#0048D6]/30";
+const emailAddress = "lucianolocacoes@gmail.com";
+const inputClassName = "mt-2 min-h-12 w-full border border-white/20 bg-[#1B222D] px-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-[#0048D6] focus:ring-2 focus:ring-[#0048D6]/30";
 
 export function ProposalSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -42,33 +43,39 @@ export function ProposalSection() {
           <h2 id="proposal-title" className="section-title mt-5 max-w-3xl">Uma proposta alinhada à <span className="text-[#FCFC04]">sua operação.</span></h2>
         </div>
 
-        <div className="grid overflow-hidden border border-white/10 bg-[#161B26] lg:grid-cols-[0.82fr_1.18fr]">
-          <div className="flex flex-col p-6 sm:p-9 lg:p-10 xl:p-12">
+        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 xl:gap-24">
+          <div className="flex flex-col py-2">
             <p className="text-[10px] font-bold tracking-[0.18em] text-[#FCFC04]">CANAIS DIRETOS</p>
             <h3 className="mt-4 text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl">Solicite uma Proposta Corporativa</h3>
             <p className="mt-4 text-sm leading-7 text-slate-400">Fale diretamente com nossa equipe comercial para estruturar o contrato ideal para sua empresa ou obra.</p>
 
-            <div className="mt-8 flex flex-col gap-3">
-              <a href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noreferrer" className="group flex items-center gap-4 border border-[#FCFC04]/35 bg-[#FCFC04]/[0.06] p-4 transition hover:border-[#FCFC04] hover:bg-[#FCFC04]/[0.1]">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#FCFC04] text-[#10131A]"><MessageCircle size={20} aria-hidden="true" /></span>
-                <span className="min-w-0 flex-1"><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-400">Telefone / WhatsApp</span><span className="mt-1 block text-sm font-bold text-white">(24) 98814-8421</span></span>
+            <div className="mt-8 border-y border-white/15">
+              <a href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noreferrer" className="group flex items-center gap-4 py-5 transition-colors hover:bg-[#0048D6]/[0.07] sm:gap-5">
+                <span className="flex size-11 shrink-0 items-center justify-center bg-[#0048D6]/15 text-[#FCFC04]"><MessageCircle size={20} aria-hidden="true" /></span>
+                <span className="min-w-0 flex-1"><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">Telefone / WhatsApp</span><span className="mt-1 block text-sm font-bold text-white">(24) 98814-8421</span></span>
                 <ArrowUpRight size={16} className="text-[#FCFC04] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
               </a>
-              <div className="flex items-center gap-4 border border-white/10 bg-[#10131A]/70 p-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-[#0048D6]/40 bg-[#0048D6]/10 text-[#FCFC04]"><Clock3 size={19} aria-hidden="true" /></span>
-                <span><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">Horário de atendimento</span><span className="mt-1 block text-sm font-semibold text-white">Segunda a Sexta/Sábado, das 06:00 às 18:00</span></span>
-              </div>
-              <a href="#nacional" className="group flex items-center gap-4 border border-white/10 bg-[#10131A]/70 p-4 transition hover:border-white/25">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-[#0048D6]/40 bg-[#0048D6]/10 text-[#FCFC04]"><MapPin size={19} aria-hidden="true" /></span>
-                <span className="min-w-0 flex-1"><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">Base operacional</span><span className="mt-1 block text-sm font-semibold text-white">Três Rios - RJ • Atendimento em Todo o Brasil</span></span>
-                <ArrowDownRight size={16} className="text-slate-500 transition-colors group-hover:text-[#FCFC04]" aria-hidden="true" />
+              <a href={`mailto:${emailAddress}`} className="group flex items-center gap-4 border-t border-white/15 py-5 transition-colors hover:bg-[#0048D6]/[0.07] sm:gap-5">
+                <span className="flex size-11 shrink-0 items-center justify-center border border-[#0048D6]/35 text-[#FCFC04]"><Mail size={19} aria-hidden="true" /></span>
+                <span className="min-w-0 flex-1"><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">E-mail comercial</span><span className="mt-1 block break-all text-sm font-semibold text-white">{emailAddress}</span></span>
+                <ArrowUpRight size={16} className="text-slate-500 transition-colors group-hover:text-[#FCFC04]" aria-hidden="true" />
               </a>
+              <div className="grid gap-0 border-t border-white/15 sm:grid-cols-2">
+                <div className="flex items-center gap-3 py-4 sm:pr-4">
+                  <Clock3 size={17} className="shrink-0 text-[#FCFC04]" aria-hidden="true" />
+                  <span><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">Atendimento</span><span className="mt-1 block text-xs font-semibold text-white">06:00 às 18:00</span></span>
+                </div>
+                <div className="flex items-center gap-3 border-t border-white/15 py-4 sm:border-l sm:border-t-0 sm:pl-4">
+                  <MapPin size={17} className="shrink-0 text-[#0048D6]" aria-hidden="true" />
+                  <span><span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">Base e cobertura</span><span className="mt-1 block text-xs font-semibold leading-5 text-white">Três Rios - RJ · Atendimento em todo o Brasil</span></span>
+                </div>
+              </div>
             </div>
 
             <div className="mt-auto hidden border-t border-white/10 pt-8 lg:block"><p className="font-mono text-[10px] tracking-[0.16em] text-slate-500">PARCERIA DIRETA · ATENDIMENTO NACIONAL</p></div>
           </div>
 
-          <div id="formulario-proposta" className="border-t border-white/10 bg-[#131720] p-6 sm:p-9 lg:border-l lg:border-t-0 lg:p-10 xl:p-12">
+          <div id="formulario-proposta" className="border-t border-white/15 pt-8 sm:pt-10 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 xl:pl-14">
             {submitted ? (
               <div className="flex min-h-full flex-col justify-center" role="status" aria-live="polite">
                 <span className="flex h-12 w-12 items-center justify-center border border-[#FCFC04]/40 bg-[#FCFC04]/10 text-[#FCFC04]"><MessageCircle size={22} aria-hidden="true" /></span>
@@ -79,7 +86,7 @@ export function ProposalSection() {
                 <button type="button" onClick={resetForm} className="mt-5 w-fit text-xs font-semibold text-slate-400 underline decoration-white/20 underline-offset-4 transition hover:text-white">Voltar ao formulário</button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <div className="mb-7"><p className="text-[10px] font-bold tracking-[0.18em] text-[#FCFC04]">FORMULÁRIO DE CONTRATO</p><p className="mt-2 text-sm text-slate-400">Conte um pouco sobre a operação que sua empresa precisa atender.</p></div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
