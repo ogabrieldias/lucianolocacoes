@@ -48,9 +48,9 @@ export function FleetShowcase() {
           <p className="max-w-sm text-sm leading-6 text-slate-400">Uma frota especializada, escolhida para atender com consistência quem precisa manter equipes e operações em movimento.</p>
         </div>
 
-        <div className="grid overflow-hidden border border-white/10 bg-[#161B26] lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="flex min-w-0 flex-col border-b border-white/10 lg:border-b-0 lg:border-r">
-            <div className="relative min-h-[300px] flex-1 -mr-px overflow-hidden bg-[#0B0F17] sm:min-h-[420px] lg:min-h-[560px]">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14 xl:gap-20">
+          <div className="flex min-w-0 flex-col">
+            <div className="relative min-h-[320px] flex-1 overflow-hidden bg-[#0B0F17] sm:min-h-[460px] lg:min-h-[600px]">
               <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_45%,rgba(0,72,214,0.28),transparent_58%),linear-gradient(135deg,#1a2231,#0b0f17_70%)]" />
               {!imageFailed && <img key={currentImage.src} src={currentImage.src} alt={currentImage.alt} onError={() => setImageFailed(true)} className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500" />}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10131A]/90 via-transparent to-[#10131A]/15" />
@@ -66,7 +66,7 @@ export function FleetShowcase() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-3 p-4 sm:p-5" aria-label="Selecionar foto da frota">
+            <div className="flex gap-3 pt-4" aria-label="Selecionar foto da frota">
               {gallery.map((image, index) => (
                 <button key={image.src} type="button" onClick={() => selectImage(index)} aria-label={`Exibir foto: ${image.label}`} aria-pressed={activeImage === index} className={`group relative h-[68px] flex-1 overflow-hidden border transition sm:h-[82px] ${activeImage === index ? "border-[#FCFC04]" : "border-white/10 hover:border-white/40"}`}>
                   <img src={image.src} alt="" aria-hidden="true" className="h-full w-full object-cover opacity-70 transition group-hover:opacity-100" />
@@ -78,22 +78,23 @@ export function FleetShowcase() {
             </div>
           </div>
 
-          <div className="flex flex-col p-6 sm:p-9 lg:p-11 xl:p-14">
-            <div className="flex w-fit items-center gap-2 border border-[#FCFC04]/30 bg-[#FCFC04]/[0.06] px-3 py-2 text-[9px] font-extrabold tracking-[0.14em] text-[#FCFC04] sm:text-[10px]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FCFC04]" /> FROTA NOVA <span className="text-[#FCFC04]/50">•</span> PRONTA PARA CONTRATO
-            </div>
-            <h2 id="fleet-title" className="mt-7 text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] text-white sm:text-4xl xl:text-[2.65rem]">Volkswagen 6.170 <span className="text-[#FCFC04]">— Robustez e Versatilidade em Campo</span></h2>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-slate-400">Uma solução confiável para o transporte de equipes e cargas em operações de indústrias e construção civil. Locação sem motorista, por contrato, para a sua empresa ganhar capacidade com previsibilidade.</p>
+          <div className="flex flex-col py-1 lg:py-3">
+            <p className="font-mono text-[10px] tracking-[0.2em] text-[#0048D6]">FROTA / VW-6.170-2022</p>
+            <h2 id="fleet-title" className="mt-5 text-4xl font-extrabold leading-[0.95] tracking-[-0.055em] text-white sm:text-5xl xl:text-[3.5rem]">Volkswagen <span className="text-[#FCFC04]">6.170</span></h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">Ano 2022. Locação por contrato, sem motorista — uma solução confiável para indústrias e empresas de construção manterem equipes e operações em movimento.</p>
 
-            <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <dl className="mt-8 border-t border-white/15">
               {specifications.map(({ icon: Icon, label, value }, index) => (
-                <div key={label} className="min-h-[122px] border border-white/10 bg-[#10131A]/70 p-4 sm:p-5">
-                  <div className="flex items-center justify-between"><Icon size={16} className="text-[#FCFC04]" /><span className="font-mono text-[9px] text-slate-600">0{index + 1}</span></div>
-                  <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">{label}</p>
-                  <p className="mt-1.5 text-xs font-semibold leading-5 text-white sm:text-[13px]">{value}</p>
+                <div key={label} className="grid grid-cols-[2rem_1fr] gap-x-4 border-b border-white/15 py-4 sm:grid-cols-[2.5rem_1fr_auto] sm:items-center sm:gap-x-5">
+                  <span className="font-mono text-xs tracking-wide text-[#FCFC04]">0{index + 1}</span>
+                  <div>
+                    <dt className="text-[9px] font-bold uppercase tracking-[0.15em] text-slate-500">{label}</dt>
+                    <dd className="mt-1 text-sm font-semibold leading-5 text-white">{value}</dd>
+                  </div>
+                  <Icon size={16} className="hidden text-[#0048D6] sm:block" aria-hidden="true" />
                 </div>
               ))}
-            </div>
+            </dl>
 
             <a href="#contato" className="mt-7 inline-flex min-h-14 items-center justify-between gap-5 bg-[#FCFC04] px-5 text-xs font-extrabold text-[#10131A] transition hover:bg-white sm:px-6">
               <span>Cotar Contrato VW 6.170</span><ArrowDownRight size={17} />
