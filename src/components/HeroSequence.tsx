@@ -5,10 +5,10 @@ import { ArrowDown, ArrowRight, MoveUpRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const TOTAL_FRAMES = 200;
-const FRAME_PREFIX = "frame-";
+const TOTAL_FRAMES = 198;
+const FRAME_PREFIX = "ezgif-frame-";
 const FRAME_EXTENSION = ".jpg";
-const FRAME_DIGITS = 4;
+const FRAME_DIGITS = 3;
 const FRAME_DIRECTORY = "/frames-jpg/";
 
 function getFramePath(index: number) {
