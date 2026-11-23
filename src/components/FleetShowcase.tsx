@@ -50,9 +50,9 @@ export function FleetShowcase() {
 
         <div className="grid overflow-hidden border border-white/10 bg-[#161B26] lg:grid-cols-[1.08fr_0.92fr]">
           <div className="flex min-w-0 flex-col border-b border-white/10 lg:border-b-0 lg:border-r">
-            <div className="relative min-h-[300px] flex-1 overflow-hidden bg-[#0B0F17] sm:min-h-[420px] lg:min-h-[560px]">
+            <div className="relative min-h-[300px] flex-1 -mr-px overflow-hidden bg-[#0B0F17] sm:min-h-[420px] lg:min-h-[560px]">
               <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_45%,rgba(0,72,214,0.28),transparent_58%),linear-gradient(135deg,#1a2231,#0b0f17_70%)]" />
-              {!imageFailed && <img key={currentImage.src} src={currentImage.src} alt={currentImage.alt} onError={() => setImageFailed(true)} className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500" />}
+              {!imageFailed && <img key={currentImage.src} src={currentImage.src} alt={currentImage.alt} onError={() => setImageFailed(true)} className="absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-500" />}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10131A]/90 via-transparent to-[#10131A]/15" />
               <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/15 bg-[#10131A]/80 px-3 py-2 backdrop-blur-sm sm:left-7 sm:top-7">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#FCFC04]" />

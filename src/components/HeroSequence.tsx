@@ -145,7 +145,7 @@ export function HeroSequence() {
         },
       });
       timeline.to(targetFrame, { value: TOTAL_FRAMES - 1, ease: "none" }, 0);
-      timeline.to(".hero-copy", { autoAlpha: 0, y: -24, ease: "power1.out", duration: 0.2 }, 0);
+      timeline.to(".hero-copy", { opacity: 0, y: -24, ease: "power1.out", duration: 0.2 }, 0);
       timeline.fromTo(".tech-card", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, stagger: 0.12, duration: 0.12, ease: "power2.out" }, 0.25);
       timeline.to(".tech-card", { autoAlpha: 0, y: -12, stagger: 0.08, duration: 0.1 }, 0.82);
     }, section);
@@ -170,7 +170,7 @@ export function HeroSequence() {
           <p className="mb-6 inline-flex items-center gap-2 border border-white/15 bg-[#10131A]/50 px-3 py-2 text-[9px] font-bold tracking-[0.19em] text-slate-200 backdrop-blur-sm sm:text-[10px]">
             <span className="h-1.5 w-1.5 bg-[#FCFC04]" /> LOCAÇÃO DE FROTA CORPORATIVA <span className="text-[#FCFC04]">•</span> TODO O BRASIL
           </p>
-          <h1 className="max-w-[730px] text-[clamp(2.8rem,6.5vw,5.9rem)] font-extrabold leading-[0.98] tracking-[-0.055em] text-white">
+          <h1 className="max-w-[730px] text-[clamp(2.8rem,6.5vw,57px)] font-extrabold leading-[0.98] tracking-[-0.055em] text-white">
             Força operacional e <span className="text-[#FCFC04]">parceria sólida</span> para indústrias e grandes obras.
           </h1>
           <p className="mt-7 max-w-[530px] text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
@@ -185,7 +185,7 @@ export function HeroSequence() {
             </a>
           </div>
         </div>
-        <div className="absolute bottom-8 left-5 flex items-center gap-3 text-[9px] font-semibold tracking-[0.18em] text-slate-400 sm:left-8 lg:left-12">
+        <div className="absolute bottom-8 left-5 mb-[-33px] flex items-center gap-2 text-[9px] font-semibold tracking-[0.18em] text-slate-400 sm:left-8 lg:left-12">
           <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15"><ArrowDown size={13} /></span>
           ROLE PARA CONHECER A OPERAÇÃO
         </div>
@@ -194,10 +194,10 @@ export function HeroSequence() {
         </div>
       </div>
 
-      <div className="tech-card pointer-events-none absolute bottom-[24%] left-[8%] z-20 hidden border border-white/15 bg-[#161B26]/80 px-4 py-3 backdrop-blur-md md:block">
+      <div className="tech-card pointer-events-none absolute bottom-[24%] left-[8%] z-20 mb-[181px] hidden border border-white/15 bg-[#161B26]/80 px-4 pl-[18px] py-3 backdrop-blur-md md:block">
         <span className="block text-[9px] tracking-[0.15em] text-slate-400">VEÍCULO</span><span className="mt-1 block text-xs font-bold text-white">VW 6.170 <span className="text-[#FCFC04]">•</span> Frota Nova</span>
       </div>
-      <div className="tech-card pointer-events-none absolute right-[8%] top-[33%] z-20 hidden border border-white/15 bg-[#161B26]/80 px-4 py-3 backdrop-blur-md md:block">
+      <div className="tech-card pointer-events-none absolute right-[8%] top-[33%] z-20 mt-[348px] mr-[511px] hidden border border-white/15 bg-[#161B26]/80 px-4 py-3 text-left backdrop-blur-md md:block">
         <span className="block text-[9px] tracking-[0.15em] text-slate-400">MODELO DE OPERAÇÃO</span><span className="mt-1 block text-xs font-bold text-white">Contratos Corporativos <span className="text-[#FCFC04]">•</span> Sem Motorista</span>
       </div>
       <div className="absolute bottom-0 left-0 z-30 h-[2px] bg-[#FCFC04] transition-[width] duration-300" style={{ width: `${progress}%` }} aria-hidden="true" />
