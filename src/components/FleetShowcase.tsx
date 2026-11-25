@@ -38,7 +38,7 @@ export function FleetShowcase() {
   }
 
   return (
-    <section id="frota" aria-labelledby="fleet-title" className="border-t border-white/10 bg-[#10131A] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="frota" aria-labelledby="fleet-title" className="border-t border-white/10 bg-[#0B1324] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-14 sm:flex-row sm:items-end">
           <div>
@@ -50,19 +50,19 @@ export function FleetShowcase() {
 
         <div className="grid items-start gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14 xl:gap-20">
           <div className="flex min-w-0 flex-col">
-            <div className="relative min-h-[320px] flex-1 overflow-hidden bg-[#0B0F17] sm:min-h-[460px] lg:min-h-[600px]">
+            <div className="relative min-h-[320px] flex-1 overflow-hidden bg-[#060B14] sm:min-h-[460px] lg:min-h-[600px]">
               <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_45%,rgba(0,72,214,0.28),transparent_58%),linear-gradient(135deg,#1a2231,#0b0f17_70%)]" />
               {!imageFailed && <img key={currentImage.src} src={currentImage.src} alt={currentImage.alt} onError={() => setImageFailed(true)} className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500" />}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10131A]/90 via-transparent to-[#10131A]/15" />
-              <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/15 bg-[#10131A]/80 px-3 py-2 backdrop-blur-sm sm:left-7 sm:top-7">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060B14]/90 via-transparent to-[#060B14]/15" />
+              <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/15 bg-[#060B14]/80 px-3 py-2 backdrop-blur-sm sm:left-7 sm:top-7">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#FCFC04]" />
                 <span className="text-[9px] font-bold tracking-[0.18em] text-white">{currentImage.label.toUpperCase()}</span>
               </div>
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between sm:bottom-7 sm:left-7 sm:right-7">
                 <div><p className="font-mono text-[10px] tracking-[0.2em] text-[#FCFC04]">VW / 6.170</p><p className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl">Feito para o trabalho.</p></div>
                 <div className="flex gap-2">
-                  <button type="button" onClick={() => moveImage(-1)} aria-label="Foto anterior" className="flex h-10 w-10 items-center justify-center border border-white/25 bg-[#10131A]/70 text-white transition hover:border-[#FCFC04] hover:text-[#FCFC04]"><ArrowLeft size={17} /></button>
-                  <button type="button" onClick={() => moveImage(1)} aria-label="Próxima foto" className="flex h-10 w-10 items-center justify-center border border-white/25 bg-[#10131A]/70 text-white transition hover:border-[#FCFC04] hover:text-[#FCFC04]"><ArrowRight size={17} /></button>
+                  <button type="button" onClick={() => moveImage(-1)} aria-label="Foto anterior" className="flex h-10 w-10 items-center justify-center border border-white/25 bg-[#060B14]/70 text-white transition hover:border-[#FCFC04] hover:text-[#FCFC04]"><ArrowLeft size={17} /></button>
+                  <button type="button" onClick={() => moveImage(1)} aria-label="Próxima foto" className="flex h-10 w-10 items-center justify-center border border-white/25 bg-[#060B14]/70 text-white transition hover:border-[#FCFC04] hover:text-[#FCFC04]"><ArrowRight size={17} /></button>
                 </div>
               </div>
             </div>
@@ -70,7 +70,7 @@ export function FleetShowcase() {
               {gallery.map((image, index) => (
                 <button key={image.src} type="button" onClick={() => selectImage(index)} aria-label={`Exibir foto: ${image.label}`} aria-pressed={activeImage === index} className={`group relative h-[68px] flex-1 overflow-hidden border transition sm:h-[82px] ${activeImage === index ? "border-[#FCFC04]" : "border-white/10 hover:border-white/40"}`}>
                   <img src={image.src} alt="" aria-hidden="true" className="h-full w-full object-cover opacity-70 transition group-hover:opacity-100" />
-                  <span className="absolute inset-0 bg-[#10131A]/20" />
+                  <span className="absolute inset-0 bg-[#060B14]/20" />
                   <span className="absolute bottom-2 left-2 text-[9px] font-bold tracking-wider text-white">0{index + 1}</span>
                 </button>
               ))}
@@ -96,7 +96,7 @@ export function FleetShowcase() {
               ))}
             </dl>
 
-            <a href="#contato" className="mt-7 inline-flex min-h-14 items-center justify-between gap-5 bg-[#FCFC04] px-5 text-xs font-extrabold text-[#10131A] transition hover:bg-white sm:px-6">
+            <a href="#contato" className="mt-7 inline-flex min-h-14 items-center justify-between gap-5 bg-[#FCFC04] px-5 text-xs font-extrabold text-[#060B14] transition hover:bg-white sm:px-6">
               <span>Cotar Contrato VW 6.170</span><ArrowDownRight size={17} />
             </a>
             <p className="mt-3 text-center text-[10px] text-slate-500">Condições comerciais personalizadas para sua operação.</p>

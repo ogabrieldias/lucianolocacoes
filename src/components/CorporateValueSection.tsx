@@ -29,7 +29,7 @@ const values = [
 
 export function CorporateValueSection() {
   return (
-    <section id="diferenciais" aria-labelledby="corporate-value-title" className="border-t border-white/10 bg-[#10131A] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="diferenciais" aria-labelledby="corporate-value-title" className="border-t border-white/10 bg-[#060B14] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
         <div className="flex flex-col justify-between lg:min-h-[540px]">
           <div>
@@ -45,7 +45,7 @@ export function CorporateValueSection() {
 
         <ol className="border-t border-white/15">
           {values.map(({ icon: Icon, number, title, description }) => (
-            <li key={title} className="group grid grid-cols-[2.75rem_1fr_auto] items-start gap-4 border-b border-white/15 py-5 sm:gap-6 sm:py-6">
+            <li key={title} className="group grid grid-cols-[2.75rem_1fr_auto] items-start gap-4 border-b border-white/15 py-5 transition-colors duration-300 hover:bg-white/[0.025] sm:gap-6 sm:py-7">
               <span className="border-l-2 border-[#0048D6] pl-3 font-mono text-xs tracking-widest text-[#FCFC04]">{number}</span>
               <div>
                 <h3 className="text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#FCFC04] sm:text-xl">{title}</h3>

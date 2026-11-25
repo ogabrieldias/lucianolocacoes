@@ -5,11 +5,11 @@ const emailAddress = "lucianolocacoes@gmail.com";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/15 bg-[#0D1118] px-5 py-12 sm:px-8 lg:px-12 lg:py-14">
+    <footer className="border-t border-white/15 bg-[#060B14] px-5 py-12 sm:px-8 lg:px-12 lg:py-14">
       <div className="mx-auto grid max-w-[1440px] gap-10 md:grid-cols-[1.1fr_1fr_auto] md:items-start md:gap-12">
         <div>
           <a href="#inicio" className="flex w-fit items-center gap-3" aria-label="Luciano Locações — início">
-            <span className="flex h-12 w-14 items-center justify-center overflow-hidden border border-white/10 bg-[#161B26]">
+            <span className="flex h-12 w-14 items-center justify-center overflow-hidden border border-white/10 bg-[#0B1324]">
               <img src="/logo/logo.png" alt="" className="h-full w-full object-cover object-[34%_center]" />
             </span>
             <span className="leading-tight"><span className="block text-sm font-extrabold tracking-wide text-white">LUCIANO</span><span className="mt-0.5 block text-[9px] font-semibold tracking-[0.24em] text-slate-400">LOCAÇÕES</span></span>

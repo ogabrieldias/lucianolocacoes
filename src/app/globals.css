@@ -1,13 +1,34 @@
 @import "tailwindcss";
 
-:root { color-scheme: dark; background: #10131A; font-family: Arial, Helvetica, sans-serif; }
+:root {
+  color-scheme: dark;
+  background: #060b14;
+  color: #fcfcfc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --canvas: #060b14;
+  --surface: #0b1324;
+  --line: rgb(255 255 255 / 12%);
+  --signal: #fcfc04;
+  --blue: #0048d6;
+  --muted: #94a3b8;
+}
+
 * { box-sizing: border-box; }
 html.lenis, html.lenis body { height: auto; }
 html.lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
-body { margin: 0; background: #10131A; color: #fff; }
-::selection { color: #10131A; background: #FCFC04; }
-.eyebrow { color: #FCFC04; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+body { margin: 0; background: var(--canvas); color: #fcfcfc; }
+::selection { color: var(--canvas); background: var(--signal); }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+.eyebrow { color: var(--signal); font-size: 10px; font-weight: 700; letter-spacing: .2em; }
 .section-title { max-width: 760px; font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.02; letter-spacing: -.05em; color: white; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+.section-rule { border-color: var(--line); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const TOTAL_FRAMES = 238;
+const HERO_START_FRAME = 99;
 const FRAME_PREFIX = "ezgif-frame-";
 const FRAME_EXTENSION = ".jpg";
 const FRAME_DIGITS = 3;
@@ -103,6 +104,16 @@ export function HeroSequence() {
       }
     };
 
+    const heroStartFrame = new Image();
+    heroStartFrame.onload = () => {
+      if (!disposed) {
+        frames[HERO_START_FRAME] = heroStartFrame;
+        activeImage = heroStartFrame;
+        draw(heroStartFrame);
+      }
+    };
+    heroStartFrame.src = getFramePath(HERO_START_FRAME);
+
     const firstFrame = new Image();
     frames[0] = firstFrame;
     firstFrame.onload = () => {
@@ -120,8 +131,8 @@ export function HeroSequence() {
     };
     firstFrame.src = getFramePath(0);
 
-    const targetFrame = { value: 0 };
-    let currentFrame = 0;
+    const targetFrame = { value: HERO_START_FRAME };
+    let currentFrame = HERO_START_FRAME;
     const renderFrame = () => {
       currentFrame += (targetFrame.value - currentFrame) * 0.12;
       if (Math.abs(targetFrame.value - currentFrame) < 0.01) currentFrame = targetFrame.value;
@@ -160,45 +171,45 @@ export function HeroSequence() {
   }, []);
 
   return (
-    <section id="inicio" ref={sectionRef} className="relative h-screen min-h-[680px] overflow-hidden bg-[#10131A]">
+    <section id="inicio" ref={sectionRef} className="relative h-screen min-h-[680px] overflow-hidden bg-[#060B14]">
       <canvas ref={canvasRef} aria-label="Caminhão branco da Luciano Locações em uma rodovia ao pôr do sol" className="absolute inset-0 h-full w-full" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#10131A]/90 via-[#10131A]/45 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10131A]/65 via-transparent to-[#10131A]/35" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060B14]/95 via-[#060B14]/55 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060B14]/75 via-transparent to-[#060B14]/40" />
 
-      <div className="hero-copy relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-center px-5 pb-12 pt-28 sm:px-8 lg:px-12">
-        <div className="max-w-[720px]">
-          <p className="mb-6 inline-flex items-center gap-2 border border-white/15 bg-[#10131A]/50 px-3 py-2 text-[9px] font-bold tracking-[0.19em] text-slate-200 backdrop-blur-sm sm:text-[10px]">
-            <span className="h-1.5 w-1.5 bg-[#FCFC04]" /> LOCAÇÃO DE FROTA CORPORATIVA <span className="text-[#FCFC04]">•</span> TODO O BRASIL
+      <div className="hero-copy relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-center px-5 pb-16 pt-28 sm:px-8 lg:px-12">
+        <div className="max-w-[900px] border-l-2 border-[#FCFC04] pl-5 sm:pl-8">
+          <p className="mb-7 inline-flex items-center gap-3 text-[9px] font-bold tracking-[0.2em] text-slate-200 sm:text-[10px]">
+            <span className="h-2 w-2 bg-[#FCFC04]" /> LOCAÇÃO DE FROTA CORPORATIVA <span className="text-[#FCFC04]">/</span> TODO O BRASIL
           </p>
-          <h1 className="max-w-[730px] text-[clamp(2.8rem,6.5vw,57px)] font-extrabold leading-[0.98] tracking-[-0.055em] text-white">
-            Força operacional e <span className="text-[#FCFC04]">parceria sólida</span> para indústrias e grandes obras.
+          <h1 className="max-w-[900px] text-[clamp(3rem,6vw,78px)] font-extrabold leading-[0.92] tracking-[-0.065em] text-white">
+            Força operacional.<br /><span className="text-[#FCFC04]">Parceria sólida</span> para<br />grandes operações.
           </h1>
-          <p className="mt-7 max-w-[530px] text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
-            Locação por contrato de caminhões Volkswagen 6.170 novos, prontos para elevar a eficiência da sua operação.
+          <p className="mt-7 max-w-[500px] text-sm leading-7 text-slate-200 sm:text-base sm:leading-8">
+            Locação por contrato de caminhões Volkswagen 6.170, prontos para manter indústrias e grandes obras em movimento.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#contato" className="inline-flex min-h-12 items-center justify-center gap-3 bg-[#FCFC04] px-5 text-xs font-extrabold text-[#10131A] transition hover:bg-white sm:px-6">
-              Solicitar Proposta de Contrato <ArrowRight size={15} />
+            <a href="#contato" className="inline-flex min-h-14 items-center justify-center gap-3 bg-[#FCFC04] px-6 text-xs font-extrabold text-[#060B14] transition-colors duration-300 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FCFC04]">
+              Solicitar proposta de contrato <ArrowRight size={15} />
             </a>
-            <a href="#frota" className="inline-flex min-h-12 items-center justify-center gap-3 border border-[#0048D6] bg-[#10131A]/40 px-5 text-xs font-bold text-white backdrop-blur-sm transition hover:bg-[#0048D6] sm:px-6">
-              Conhecer a Frota <MoveUpRight size={15} />
+            <a href="#frota" className="inline-flex min-h-14 items-center justify-center gap-3 border border-white/35 bg-[#060B14]/30 px-6 text-xs font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#FCFC04] hover:text-[#FCFC04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FCFC04]">
+              Conhecer a frota <MoveUpRight size={15} />
             </a>
           </div>
         </div>
-        <div className="absolute bottom-8 left-5 mb-[-33px] flex items-center gap-2 text-[9px] font-semibold tracking-[0.18em] text-slate-400 sm:left-8 lg:left-12">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15"><ArrowDown size={13} /></span>
+        <div className="absolute bottom-8 left-5 flex items-center gap-3 text-[9px] font-semibold tracking-[0.18em] text-slate-300 sm:left-8 lg:left-12">
+          <span className="flex h-9 w-9 items-center justify-center border border-white/30"><ArrowDown size={13} /></span>
           ROLE PARA CONHECER A OPERAÇÃO
         </div>
-        <div className="absolute bottom-8 right-5 hidden items-center gap-3 text-[9px] tracking-[0.16em] text-slate-500 sm:flex lg:right-12">
-          <span>01</span><span className="h-px w-12 bg-white/20" /><span>03</span>
+        <div className="absolute bottom-8 right-5 hidden items-center gap-3 text-[9px] tracking-[0.16em] text-slate-300 sm:flex lg:right-12">
+          <span>01</span><span className="h-px w-12 bg-white/40" /><span>03</span>
         </div>
       </div>
 
-      <div className="tech-card pointer-events-none absolute bottom-[24%] left-[8%] z-20 mb-[181px] hidden border border-white/15 bg-[#161B26]/80 px-4 pl-[18px] py-3 backdrop-blur-md md:block">
-        <span className="block text-[9px] tracking-[0.15em] text-slate-400">VEÍCULO</span><span className="mt-1 block text-xs font-bold text-white">VW 6.170 <span className="text-[#FCFC04]">•</span> Frota Nova</span>
+      <div className="tech-card pointer-events-none absolute bottom-24 right-5 z-20 hidden border border-white/20 bg-[#0B1324]/85 px-4 py-3 backdrop-blur-md md:block lg:right-12">
+        <span className="block text-[9px] tracking-[0.15em] text-slate-300">FROTA DISPONÍVEL</span><span className="mt-1 block text-xs font-bold text-white">VW 6.170 <span className="text-[#FCFC04]">/</span> Ano 2022</span>
       </div>
-      <div className="tech-card pointer-events-none absolute right-[8%] top-[33%] z-20 mt-[348px] mr-[511px] hidden border border-white/15 bg-[#161B26]/80 px-4 py-3 text-left backdrop-blur-md md:block">
-        <span className="block text-[9px] tracking-[0.15em] text-slate-400">MODELO DE OPERAÇÃO</span><span className="mt-1 block text-xs font-bold text-white">Contratos Corporativos <span className="text-[#FCFC04]">•</span> Sem Motorista</span>
+      <div className="tech-card pointer-events-none absolute right-5 top-28 z-20 hidden border border-white/20 bg-[#0B1324]/85 px-4 py-3 text-left backdrop-blur-md sm:block lg:right-12">
+        <span className="block text-[9px] tracking-[0.15em] text-slate-300">OPERAÇÃO</span><span className="mt-1 block text-xs font-bold text-white">Contrato corporativo <span className="text-[#FCFC04]">/</span> Sem motorista</span>
       </div>
       <div className="absolute bottom-0 left-0 z-30 h-[2px] bg-[#FCFC04] transition-[width] duration-300" style={{ width: `${progress}%` }} aria-hidden="true" />
       <span className="sr-only" aria-live="polite">{sequenceReady ? "Animação da frota carregada" : `Carregando sequência visual: ${progress}%`}</span>
