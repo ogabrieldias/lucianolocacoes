@@ -5,7 +5,7 @@ import { ArrowDownRight, ArrowUpRight, Clock3, Mail, MapPin, MessageCircle } fro
 
 const phoneNumber = "5524988148421";
 const emailAddress = "lucianolocacoes@gmail.com";
-const inputClassName = "mt-2 min-h-12 w-full border border-white/20 bg-[#1B222D] px-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-[#0048D6] focus:ring-2 focus:ring-[#0048D6]/30";
+const inputClassName = "mt-2 min-h-12 w-full border border-white/20 bg-[#060B14] px-4 text-sm text-white outline-none transition-colors duration-200 placeholder:text-slate-500 focus:border-[#FCFC04] focus:ring-2 focus:ring-[#FCFC04]/20";
 
 export function ProposalSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -36,7 +36,7 @@ export function ProposalSection() {
   }
 
   return (
-    <section id="contato" aria-labelledby="proposal-title" className="border-t border-white/10 bg-[#10131A] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+    <section id="contato" aria-labelledby="proposal-title" className="border-t border-white/10 bg-[#0B1324] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-10 sm:mb-14">
           <p className="eyebrow">04 / FALE COM NOSSA EQUIPE</p>
@@ -82,7 +82,7 @@ export function ProposalSection() {
                 <p className="mt-7 text-[10px] font-bold tracking-[0.18em] text-[#FCFC04]">PRÓXIMO PASSO</p>
                 <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Sua solicitação está pronta.</h3>
                 <p className="mt-4 max-w-lg text-sm leading-7 text-slate-400">Revise e envie a mensagem pelo WhatsApp para concluir o pedido de proposta. Ela já inclui os dados informados no formulário.</p>
-                <a href={whatsAppUrl} target="_blank" rel="noreferrer" className="mt-7 inline-flex min-h-14 items-center justify-between gap-4 bg-[#FCFC04] px-5 text-sm font-extrabold text-[#10131A] transition hover:bg-white sm:max-w-sm sm:px-6">Continuar no WhatsApp <ArrowUpRight size={18} aria-hidden="true" /></a>
+                <a href={whatsAppUrl} target="_blank" rel="noreferrer" className="mt-7 inline-flex min-h-14 items-center justify-between gap-4 bg-[#FCFC04] px-5 text-sm font-extrabold text-[#060B14] transition hover:bg-white sm:max-w-sm sm:px-6">Continuar no WhatsApp <ArrowUpRight size={18} aria-hidden="true" /></a>
                 <button type="button" onClick={resetForm} className="mt-5 w-fit text-xs font-semibold text-slate-400 underline decoration-white/20 underline-offset-4 transition hover:text-white">Voltar ao formulário</button>
               </div>
             ) : (
@@ -103,7 +103,7 @@ export function ProposalSection() {
                 </div>
                 <label className="block text-xs font-semibold text-slate-300">Prazo do contrato <span className="text-[#FCFC04]">*</span><select className={inputClassName} name="term" required defaultValue=""><option value="" disabled>Selecione uma opção</option><option>Até 3 meses</option><option>De 3 a 6 meses</option><option>De 6 a 12 meses</option><option>Mais de 12 meses</option><option>A definir</option></select></label>
 
-                <button type="submit" className="mt-2 inline-flex min-h-14 w-full items-center justify-between gap-4 bg-[#FCFC04] px-5 text-sm font-extrabold text-[#10131A] transition hover:bg-white sm:px-6"><span>Preparar solicitação no WhatsApp</span><ArrowUpRight size={18} aria-hidden="true" /></button>
+                <button type="submit" className="mt-2 inline-flex min-h-14 w-full items-center justify-between gap-4 bg-[#FCFC04] px-5 text-sm font-extrabold text-[#060B14] transition hover:bg-white sm:px-6"><span>Preparar solicitação no WhatsApp</span><ArrowUpRight size={18} aria-hidden="true" /></button>
                 <p className="text-center text-[10px] leading-5 text-slate-500">Seus dados serão organizados em uma mensagem para você revisar e enviar pelo WhatsApp.</p>
               </form>
             )}
